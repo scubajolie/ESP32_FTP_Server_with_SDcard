@@ -4,6 +4,13 @@
 #include "FS.h"
 #include "SD.h"
 #include "SPI.h"
+#include <SPIFFS.h>
+
+#define FSPI_SCLK_PIN   37
+#define FSPI_MISO_PIN   36
+#define FSPI_MOSI_PIN   35
+#define FSPI_CS_PIN     38
+extern SPIClass SD_SPI;
 
 extern char wifi_name[20];
 extern char wifi_pass[20];

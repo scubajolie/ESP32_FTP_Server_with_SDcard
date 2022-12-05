@@ -1,5 +1,7 @@
 #include "files.h"
 #define FTP_DEBUG
+SPIClass SD_SPI(FSPI);
+
 char auth_data[200] = {0};
 
 char wifi_name[20] = {0};
@@ -9,8 +11,8 @@ char ftp_pass[20] = {0};
 
 void SD_card_status()
 {
-
-    if (!SD.begin())
+    SD_SPI.begin(FSPI_SCLK_PIN, FSPI_MISO_PIN, FSPI_MOSI_PIN, FSPI_CS_PIN);
+    if (!SD.begin(14, SD_SPI))
     {
         Serial.println("Card Mount Failed");
         return;
@@ -46,7 +48,7 @@ void SD_card_status()
 
 void Auth_decode()
 {
-    readFile(SD, "/auth.txt");
+    readFile(SPIFFS, "/auth.txt");
     int size_data = strlen(auth_data);
     int count = 0;
     int val = 0;

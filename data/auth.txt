@@ -1,0 +1,4 @@
+wifi_user_name="adafruit"
+wifi_pass="ffffffff"
+FTP_user_name="braidan"
+FTP_pass="duffy"
