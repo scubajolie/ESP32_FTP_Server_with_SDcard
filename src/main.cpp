@@ -2,14 +2,14 @@
 #include <WiFi.h>
 #include <WiFiClient.h>
 #include "ESP32FtpServer.h"
-#include "files.h"
+#include "ESP32_files.h"
 
 FtpServer ftpSrv;
 
-void setup()
+// Before you call this function, the serial port needs to be open.
+void ESP32_setup()
 {
-  Serial.begin(115200);
-  while(!Serial); // Wait for the Serial port to open
+
   SPIFFS.begin();
   SD_card_status(); /* Status of SD card*/
   Auth_decode();    /* Decoding auth file from SD card for WIFI and FTP config*/
@@ -37,7 +37,7 @@ void setup()
   }
 }
 
-void loop()
+void ESP32_loop()
 {
   ftpSrv.handleFTP();
 }

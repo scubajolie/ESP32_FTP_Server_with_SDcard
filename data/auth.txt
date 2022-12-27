@@ -1,4 +1,4 @@
-wifi_user_name="adafruit"
-wifi_pass="ffffffff"
+wifi_user_name="scubajolie"
+wifi_pass="Jellyfish"
 FTP_user_name="braidan"
 FTP_pass="duffy"

@@ -35,7 +35,7 @@
 
 #define FTP_SERVER_VERSION "FTP-2021-06-07"
 
-#define FTP_CTRL_PORT 21         /* Command port on wich server is listening */
+#define FTP_CTRL_PORT 21         /* Command port on which server is listening */
 #define FTP_DATA_PORT_PASV 50009 /* Data port in passive mode */
 
 #define FTP_TIME_OUT 5       
@@ -43,6 +43,11 @@
 #define FTP_CWD_SIZE 255 + 8 
 #define FTP_FIL_SIZE 255     
 #define FTP_BUF_SIZE 4096 
+
+
+void ESP32_setup();
+
+void ESP32_loop();
 
 class FtpServer
 {

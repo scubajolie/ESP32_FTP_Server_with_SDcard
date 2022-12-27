@@ -20,7 +20,7 @@ extern char ftp_pass[20];
 extern char auth_data[200];
 void SD_card_status();
 void Auth_decode();
-bool readFile(fs::FS &fs, const char * path);
+bool ESP32_readFile(fs::FS &fs, const char * path);
 
 
 #endif //__FILES_H__

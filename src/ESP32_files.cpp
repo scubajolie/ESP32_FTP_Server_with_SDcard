@@ -1,4 +1,4 @@
-#include "files.h"
+#include "ESP32_files.h"
 #define FTP_DEBUG
 SPIClass SD_SPI(FSPI);
 
@@ -48,7 +48,7 @@ void SD_card_status()
 
 void Auth_decode()
 {
-    readFile(SPIFFS, "/auth.txt");
+    ESP32_readFile(SPIFFS, "/auth.txt");
     int size_data = strlen(auth_data);
     int count = 0;
     int val = 0;
@@ -91,7 +91,7 @@ void Auth_decode()
 #endif
 }
 
-bool readFile(fs::FS &fs, const char *path)
+bool ESP32_readFile(fs::FS &fs, const char *path)
 {
     Serial.printf("Reading file: %s\n", path);
     File file = fs.open(path);
