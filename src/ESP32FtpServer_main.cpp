@@ -7,11 +7,11 @@
 FtpServer ftpSrv;
 
 // Before you call this function, the serial port needs to be open.
-void ESP32_setup()
+// Opens the SD card and defines pinouts. 
+int ESP32_setup()
 {
 
   SPIFFS.begin();
-  SD_card_status(); /* Status of SD card*/
   Auth_decode();    /* Decoding auth file from SD card for WIFI and FTP config*/
   WiFi.begin(wifi_name, wifi_pass);
   Serial.println("");
@@ -20,6 +20,11 @@ void ESP32_setup()
     delay(500);
     Serial.print(".");
   }
+  // TODO:  Add a timeout
+  /*
+  if (WiFiTimedOut) {
+    return SETUP_FAIL_NO_WIFI;
+  }*/
 
   Serial.println("");
   Serial.print("Connected to ");
@@ -32,9 +37,20 @@ void ESP32_setup()
   {
     Serial.println("SD opened!");
     /* username, password for ftp.  
-       set ports in ESP32FtpServer.h  (default 21 for FTP, 50009 for passive data port)*/
+    set ports in ESP32FtpServer.h  (default 21 for FTP, 50009 for passive data port)*/
     ftpSrv.begin(ftp_name, ftp_pass);
   }
+  else {
+    Serial.println("SD card failed to initialize");
+    return SETUP_FAIL_NO_SDCARD;
+  }
+
+  int status = SD_card_status(); /* Status of SD card*/
+  if (status != 0) {
+    return status;
+  }
+
+  return 0;
 }
 
 void ESP32_loop()

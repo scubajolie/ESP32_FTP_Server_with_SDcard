@@ -32,6 +32,7 @@
 #include <SD.h>
 #include <FS.h>
 #include <WiFiClient.h>
+#include "ESP32_files.h"
 
 #define FTP_SERVER_VERSION "FTP-2021-06-07"
 
@@ -45,7 +46,12 @@
 #define FTP_BUF_SIZE 4096 
 
 
-void ESP32_setup();
+/**
+ * Sets up the ESP32 microcontroller.
+ * 
+ * @return one of the above SETUP errors, or 0 if setup is successful.
+*/
+int ESP32_setup();
 
 void ESP32_loop();
 

@@ -76,9 +76,9 @@ void FtpServer::handleFTP()
     abortTransfer();
     iniVariables();
 
-#ifdef FTP_DEBUG
+    #ifdef FTP_DEBUG
     Serial.println("Ftp server waiting for connection on port " + String(FTP_CTRL_PORT));
-#endif
+    #endif
 
     cmdStatus = 2;
   }

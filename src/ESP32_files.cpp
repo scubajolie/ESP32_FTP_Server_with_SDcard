@@ -9,19 +9,19 @@ char wifi_pass[20] = {0};
 char ftp_name[20] = {0};
 char ftp_pass[20] = {0};
 
-void SD_card_status()
+int SD_card_status()
 {
-    SD_SPI.begin(FSPI_SCLK_PIN, FSPI_MISO_PIN, FSPI_MOSI_PIN, FSPI_CS_PIN);
-    if (!SD.begin(14, SD_SPI))
-    {
-        Serial.println("Card Mount Failed");
-        return;
-    }
+    // SD_SPI.begin(FSPI_SCLK_PIN, FSPI_MISO_PIN, FSPI_MOSI_PIN, FSPI_CS_PIN);
+    // if (!SD.begin(14, SD_SPI))
+    // {
+    //    Serial.println("Card Mount Failed");
+    //    return;
+    // }
     uint8_t cardType = SD.cardType();
     if (cardType == CARD_NONE)
     {
         Serial.println("No SD card attached");
-        return;
+        return SETUP_FAIL_NO_SDCARD_TYPE;
     }
 
     Serial.print("SD Card Type: ");
@@ -44,6 +44,7 @@ void SD_card_status()
     uint64_t cardSize = SD.cardSize() / (1024 * 1024);
     Serial.printf("SD Card Size: %lluMB approx:%lluGB\n", cardSize, cardSize / 1024);
     delay(2000);
+    return 0;
 }
 
 void Auth_decode()
