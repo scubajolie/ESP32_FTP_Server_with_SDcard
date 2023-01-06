@@ -1,5 +1,5 @@
 #include "ESP32_files.h"
-#define FTP_DEBUG
+// #define FTP_DEBUG
 SPIClass SD_SPI(FSPI);
 
 char auth_data[200] = {0};
