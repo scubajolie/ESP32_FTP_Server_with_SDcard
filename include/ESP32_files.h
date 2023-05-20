@@ -11,9 +11,9 @@
 #define FSPI_MOSI_PIN   35
 #define FSPI_CS_PIN     38
 
-#define SETUP_FAIL_NO_WIFI -1;
-#define SETUP_FAIL_NO_SDCARD -2;
-#define SETUP_FAIL_NO_SDCARD_TYPE -3;
+#define SETUP_FAIL_NO_WIFI        -1
+#define SETUP_FAIL_NO_SDCARD      -2
+#define SETUP_FAIL_NO_SDCARD_TYPE -3
 
 extern SPIClass SD_SPI;
 
